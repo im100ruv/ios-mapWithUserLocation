@@ -14,6 +14,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     // Outlets
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var latitudeLbl: UILabel!
+    @IBOutlet weak var LongitudeLbl: UILabel!
+    @IBOutlet weak var courseLbl: UILabel!
+    @IBOutlet weak var speedLbl: UILabel!
+    @IBOutlet weak var altitudeLbl: UILabel!
+    @IBOutlet weak var nearestAddressLbl: UILabel!
     
     var locationManager = CLLocationManager()
 
@@ -46,47 +52,52 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         self.mapView.setRegion(region, animated: true)
         
-        // Getting user location details:
+        // Displaying location details
+        self.latitudeLbl.text = String(userLocation.coordinate.latitude)
+        self.LongitudeLbl.text = String(userLocation.coordinate.longitude)
+        self.courseLbl.text = String(userLocation.course)
+        self.speedLbl.text = String(userLocation.speed)
+        self.altitudeLbl.text = String(userLocation.altitude)
+        
+        // Getting user location details
         CLGeocoder().reverseGeocodeLocation(userLocation) { (placemarks, error) in
             if error != nil {
                 print(error!)
             } else {
                 if let placemark = placemarks?[0] {
-                    var subThoroughFare = ""
+                    
+                    var address = ""
                     if placemark.subThoroughfare != nil {
-                        subThoroughFare = placemark.subThoroughfare!
+                        address += placemark.subThoroughfare!
                     }
 
-                    var thoroughFare = ""
                     if placemark.thoroughfare != nil {
-                        thoroughFare = placemark.thoroughfare!
+                        address += " " + placemark.thoroughfare!
                     }
 
-                    var subLocality = ""
                     if placemark.subLocality != nil {
-                        subLocality = placemark.subLocality!
+                        address += "\n" + placemark.subLocality!
                     }
-
-                    var subAdministrativeArea = ""
+                    
                     if placemark.subAdministrativeArea != nil {
-                        subAdministrativeArea = placemark.subAdministrativeArea!
+                        address += " " + placemark.subAdministrativeArea!
                     }
 
-                    var postalCode = ""
                     if placemark.postalCode != nil {
-                        postalCode = placemark.postalCode!
+                        address += "\n" + placemark.postalCode!
                     }
 
-                    var country = ""
                     if placemark.country != nil {
-                        country = placemark.country!
+                        address += " " + placemark.country! + "\n"
                     }
+                    
+                    self.nearestAddressLbl.text = address
 
-                    print("\n" + subThoroughFare + " " + thoroughFare + "\n" + subLocality + " " + subAdministrativeArea + "\n" + postalCode + " " + country)
+//                    print("\n" + subThoroughFare + " " + thoroughFare + "\n" + subLocality + " " + subAdministrativeArea + "\n" + postalCode + " " + country)
                 }
             }
         }
-        
+
     }
 
 
