@@ -12,6 +12,7 @@
 		C69F54D72041353B006619E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C69F54D52041353B006619E4 /* Main.storyboard */; };
 		C69F54D92041353B006619E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C69F54D82041353B006619E4 /* Assets.xcassets */; };
 		C69F54DC2041353B006619E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C69F54DA2041353B006619E4 /* LaunchScreen.storyboard */; };
+		C69F54E520413564006619E4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C69F54E420413563006619E4 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		C69F54D82041353B006619E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C69F54DB2041353B006619E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C69F54DD2041353B006619E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C69F54E420413563006619E4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C69F54E520413564006619E4 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +43,7 @@
 			children = (
 				C69F54D02041353B006619E4 /* MapWithUserLocation */,
 				C69F54CF2041353B006619E4 /* Products */,
+				C69F54E320413563006619E4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +66,14 @@
 				C69F54DD2041353B006619E4 /* Info.plist */,
 			);
 			path = MapWithUserLocation;
+			sourceTree = "<group>";
+		};
+		C69F54E320413563006619E4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C69F54E420413563006619E4 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
