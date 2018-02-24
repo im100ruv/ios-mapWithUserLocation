@@ -46,6 +46,47 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         self.mapView.setRegion(region, animated: true)
         
+        // Getting user location details:
+        CLGeocoder().reverseGeocodeLocation(userLocation) { (placemarks, error) in
+            if error != nil {
+                print(error!)
+            } else {
+                if let placemark = placemarks?[0] {
+                    var subThoroughFare = ""
+                    if placemark.subThoroughfare != nil {
+                        subThoroughFare = placemark.subThoroughfare!
+                    }
+
+                    var thoroughFare = ""
+                    if placemark.thoroughfare != nil {
+                        thoroughFare = placemark.thoroughfare!
+                    }
+
+                    var subLocality = ""
+                    if placemark.subLocality != nil {
+                        subLocality = placemark.subLocality!
+                    }
+
+                    var subAdministrativeArea = ""
+                    if placemark.subAdministrativeArea != nil {
+                        subAdministrativeArea = placemark.subAdministrativeArea!
+                    }
+
+                    var postalCode = ""
+                    if placemark.postalCode != nil {
+                        postalCode = placemark.postalCode!
+                    }
+
+                    var country = ""
+                    if placemark.country != nil {
+                        country = placemark.country!
+                    }
+
+                    print("\n" + subThoroughFare + " " + thoroughFare + "\n" + subLocality + " " + subAdministrativeArea + "\n" + postalCode + " " + country)
+                }
+            }
+        }
+        
     }
 
 
